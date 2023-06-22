@@ -9,6 +9,10 @@ export const EXPLORE_SCREEN = "EXPLORE_SCREEN";
 export const PROFILE_SCREEN = "PROFILE_SCREEN";
 export const SONG_BOOK_SCREEN = "SONG_BOOK_SCREEN";
 
+
+//Tabs Screen
+export const RECOMMENDED_SCREEN = "RECOMMENDED_SCREEN";
+
 //Navigation
 export const BOTTOM_TABS = "BOTTOM_TABS";
 
