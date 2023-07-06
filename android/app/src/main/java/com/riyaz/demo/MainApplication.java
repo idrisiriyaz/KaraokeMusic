@@ -1,4 +1,4 @@
-package com.karaokemusic;
+package com.riyaz.demo;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

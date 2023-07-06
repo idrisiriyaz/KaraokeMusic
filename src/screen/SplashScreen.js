@@ -38,7 +38,7 @@ const SplashScreen = () => {
     return (
         <Animated.View style={{ flex: 1, }}>
             <Animated.View style={{ flex: 1, opacity, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.WHITE }} >
-                <Text style={{ fontSize: 20, color: Colors.ARSENIC }}>Karaoke Music</Text>
+                <Text style={{ fontSize: 20, color: Colors.ARSENIC }}>Demo App</Text>
             </Animated.View>
         </Animated.View>
     )

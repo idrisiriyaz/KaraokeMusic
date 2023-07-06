@@ -5,6 +5,7 @@ import React from 'react';
 //screens
 import { ScreenNames } from '../../global';
 import FeedScreen from '../../screen/FeedScreen';
+import TestScreen from '../../screen/TestScreen';
 
 const FeedStack = ({
     params,

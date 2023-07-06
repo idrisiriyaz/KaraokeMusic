@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.karaokemusic"
+    namespace "com.riyaz.demo"
     defaultConfig {
-        applicationId "com.karaokemusic"
+        applicationId "com.riyaz.demo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -8,6 +8,7 @@ export const ACTIVITY_SCREEN = "ACTIVITY_SCREEN";
 export const EXPLORE_SCREEN = "EXPLORE_SCREEN";
 export const PROFILE_SCREEN = "PROFILE_SCREEN";
 export const SONG_BOOK_SCREEN = "SONG_BOOK_SCREEN";
+export const TEST_SCREEN = "TEST_SCREEN";
 
 
 //Tabs Screen

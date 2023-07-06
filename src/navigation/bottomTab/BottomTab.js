@@ -20,7 +20,7 @@ const BottomTab = () => {
         <Tab.Navigator
             tabBar={(props) => <CustomBottomTab {...props} />}
             backBehavior='none'
-            initialRouteName={ScreenNames.SONG_BOOK_STACK}
+            initialRouteName={ScreenNames.FEED_STACK}
             screenOptions={styles.screenOption}
         >
             <Tab.Screen name={ScreenNames.FEED_STACK} component={FeedStack} />

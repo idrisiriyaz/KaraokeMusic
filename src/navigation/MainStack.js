@@ -9,6 +9,7 @@ import SongBookScreen from '../screen/SongBookScreen';
 import ExploreScreen from '../screen/ExploreScreen';
 import ProfileScreen from '../screen/ProfileScreen';
 import SplashScreen from '../screen/SplashScreen';
+import TestScreen from '../screen/TestScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const MainStack = () => {
         <Stack.Screen name={ScreenNames.SONG_BOOK_SCREEN} component={SongBookScreen} />
         <Stack.Screen name={ScreenNames.EXPLORE_SCREEN} component={ExploreScreen} />
         <Stack.Screen name={ScreenNames.PROFILE_SCREEN} component={ProfileScreen} />
+        <Stack.Screen name={ScreenNames.TEST_SCREEN} component={TestScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

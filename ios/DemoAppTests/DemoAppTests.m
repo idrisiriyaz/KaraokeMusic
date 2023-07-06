@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface KaraokeMusicTests : XCTestCase
+@interface DemoAppTests : XCTestCase
 
 @end
 
-@implementation KaraokeMusicTests
+@implementation DemoAppTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

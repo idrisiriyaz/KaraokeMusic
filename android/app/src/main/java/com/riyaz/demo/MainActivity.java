@@ -1,4 +1,4 @@
-package com.karaokemusic;
+package com.riyaz.demo;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "KaraokeMusic";
+    return "Demo App";
   }
 
   /**
