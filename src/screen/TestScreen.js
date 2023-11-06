@@ -10,7 +10,7 @@ import { Constants } from '../global';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import notifee, { TriggerType } from '@notifee/react-native';
 const TestScreen = () => {
-
+  const channelId = 'your_channel_id';
   const webViewRef = useRef(null);
   const [objectData, setObjectData] = React.useState([]);
   const [webLink, setWebLink] = React.useState(false);
@@ -32,33 +32,40 @@ const TestScreen = () => {
     hideDateTimePicker();
   };
 
-  const scheduleTriggerNotification = async () => {
-    if (selectedDateTime) {
-      const channelId = 'your_channel_id';
-      const channel = {
-        id: channelId,
-        name: 'Your Channel Name',
-      };
+  const scheduleTriggerNotification = async (selectedDateTime) => {
+    selectedDateTime = new Date(selectedDateTime);
+    console.log("🚀 ~ selectedDateTime:", selectedDateTime)
+    try {
+      if (selectedDateTime) {
+        const channel = {
+          id: channelId,
+          name: 'Your Channel Name',
+        };
 
-      await notifee.createChannel(channel);
+        await notifee.createChannel(channel);
+        const trigger = {
+          type: TriggerType.TIMESTAMP,
+          timestamp: selectedDateTime.getTime(),
+        };
 
-      // Create a time-based trigger with the selected date and time
-      const trigger = {
-        type: TriggerType.TIMESTAMP,
-        timestamp: selectedDateTime.getTime(),
-      };
-
-      // Create the trigger notification
-      await notifee.createTriggerNotification(
-        {
+        await notifee.createTriggerNotification({
           title: 'Trigger Notification',
-          body: 'This is a trigger-based notification.',
+          body: 'This is a trigger-based notification. ' + selectedDateTime,
           android: {
             channelId: channelId,
           },
         },
-        trigger,
-      );
+          trigger,
+        )
+        Alert.alert("Success", "Notification get soon... " + selectedDateTime);
+
+      } else {
+        Alert.alert("error", "Please insert proper date and time")
+
+      }
+    } catch (error) {
+      Alert.alert("error", JSON.stringify(error))
+
     }
   };
 
@@ -152,20 +159,24 @@ const TestScreen = () => {
 
   const handleWebViewMessage = event => {
     const data = JSON.parse(event.nativeEvent.data);
+    // scheduleTriggerNotification(data?.date);
+
     performAction(data);
   };
 
   const performAction = async formData => {
-    setLoading(true)
-    console.log("🚀 ~ file: TestScreen.js:25 ~ performAction ~ formData:", formData)
-    setObjectData([...objectData, formData]);
-    const userData = await AsyncStorage.getItem("userData");
 
+
+    setLoading(true);
+
+    scheduleTriggerNotification(formData?.date);
+    setObjectData([...objectData, formData]);
+
+    const userData = await AsyncStorage.getItem("userData");
     try {
       if (isConnection) {
         const data = await axios.post("https://testofflinepoc.azurewebsites.net/api/v1/employee", objectData);
         if (data.status == 200) {
-
           Alert.alert("data", JSON.stringify(data.data))
         }
       } else {
@@ -174,7 +185,6 @@ const TestScreen = () => {
 
         AsyncStorage.setItem("userData", JSON.stringify(newData));
         Alert.alert("Success", "Successfully  uploaded...  ")
-
       }
     } catch (error) {
       Alert.alert("error", JSON.stringify(error))
@@ -187,7 +197,17 @@ const TestScreen = () => {
   const upgradeURL = () => {
     setWebLink(!webLink)
   }
+
+  const createChannel = async () => {
+    const channel = {
+      id: channelId,
+      name: 'Your Channel Name',
+    };
+
+    await notifee.createChannel(channel);
+  }
   useEffect(() => {
+    // createChannel();
     AsyncStorage.setItem("userData", JSON.stringify([]));
   }, [objectData, webLink])
 
@@ -207,7 +227,9 @@ const TestScreen = () => {
       <Button onPress={upgradeURL} title='Upgrade Web Version' />
       <Button title="Select Date and Time" onPress={showDateTimePicker} />
       {selectedDateTime && (
-        <Button title="Schedule Trigger Notification" onPress={scheduleTriggerNotification} />
+        <Button title="Schedule Trigger Notification" onPress={() => {
+          scheduleTriggerNotification(selectedDateTime)
+        }} />
       )}
       <DateTimePickerModal
         isVisible={isDateTimePickerVisible}

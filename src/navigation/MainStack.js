@@ -10,6 +10,7 @@ import ExploreScreen from '../screen/ExploreScreen';
 import ProfileScreen from '../screen/ProfileScreen';
 import SplashScreen from '../screen/SplashScreen';
 import TestScreen from '../screen/TestScreen';
+import FormScreen from '../screen/FormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const MainStack = () => {
         <Stack.Screen name={ScreenNames.EXPLORE_SCREEN} component={ExploreScreen} />
         <Stack.Screen name={ScreenNames.PROFILE_SCREEN} component={ProfileScreen} />
         <Stack.Screen name={ScreenNames.TEST_SCREEN} component={TestScreen} />
+        <Stack.Screen name={ScreenNames.FORM_SCREEN} component={FormScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
